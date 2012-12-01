@@ -277,12 +277,9 @@
                     action[v].apply($(this), [event, self]);
                 });
             });
-        },
-
-
-
-
+        }
     }
+    
     $(window).ready(function(){
         new Control();
     });

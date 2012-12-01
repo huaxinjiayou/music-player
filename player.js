@@ -167,7 +167,7 @@
                     if(/.*\.lrc$/.test(v.name)){
                         this.lrcList.push({
                             src: v,
-                            name: /(.*)\./.exec(v.name)[1] 
+                            name: /(.*)\./.exec(v.name)[1].trim()
                         });
                     }
                     continue;
@@ -215,9 +215,10 @@
         },
 
         findLrc: function(name){
+            name = name.trim();
             var index = -1;
             this.lrcList.forEach(function(v, i){
-                if(v.name == name){
+                if(v.name == name || v.name.indexOf(name) != -1 || name.indexOf(v.name) != -1){
                     index = i;
                     return index;
                 }

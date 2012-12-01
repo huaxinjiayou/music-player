@@ -21,7 +21,7 @@
         init: function(){
             var self = this;
             var reader = new FileReader();
-            reader.readAsText(this.lrc.src);
+            reader.readAsText(this.lrc.src, "gb2312");
             reader.onload = function(){
                 self.lrcText = reader.result;
                 self.txt2list(self.lrcText);
@@ -42,7 +42,7 @@
             if(this.lrcList.length === 0){
                 return;
             }
-            currentTime = currentTime - 0.5 < 0 ? 0 : currentTime - 0.5;
+            // currentTime = currentTime - 0.5 < 0 ? 0 : currentTime - 0.5;
             var index = this.currentLrcIndex;
             var lrc = this.getCurrentLrc(currentTime);
 
@@ -86,6 +86,7 @@
             return digitTime;
         },
 
+        // 获取当前的歌词
         getCurrentLrc: function(currentTime){
             var index = this.currentLrcIndex;
 
@@ -94,21 +95,25 @@
             } else if(index === this.lrcList.length - 1){
                 index = this.lrcList.length - 2;
             }
+            var next2Index = index + 2 > this.lrcList.length - 1 ? index + 1 : index + 2;
 
             var lrc = this.lrcList[index];
-            var preLrc = this.lrcList[index ? index - 1 : index];
+            var preLrc = this.lrcList[index ? index - 1 : 0];
             var nextLrc = this.lrcList[index + 1];
+            var next2Lrc = this.lrcList[next2Index];
 
-            if(currentTime >= lrc.time && currentTime <= nextLrc.time){
+            if(currentTime >= lrc.time && currentTime < nextLrc.time){
+                return lrc.content;
+            } else if(currentTime < lrc.time && (lrc === preLrc || currentTime >= preLrc.time)){
+                return lrc.content;
+            } else if(currentTime >= nextLrc.time && (next2Lrc === nextLrc || currentTime < next2Lrc.time)){
                 this.currentLrcIndex = index + 1;
                 return nextLrc.content;
-            } else if(currentTime < lrc.time && currentTime >= preLrc.time){
-                return lrc.content;
             } else{
                 index = 0;
                 for(var i = 0; i < this.lrcList.length - 1; i++){
                     if(currentTime >= this.lrcList[i].time){
-                        index = i + 1;
+                        index = i;
                     } else{
                         break;
                     }
@@ -127,14 +132,6 @@
             result.push("</ul>");
 
             $(this.lrcCanvas).html(result.join(""));
-        },
-
-        pause: function(){
-
-        },
-
-        show: function(){
-
         }
     }
 
