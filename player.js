@@ -39,7 +39,7 @@
 
         pause: function(){
             this.player.pause();
-            this.lrc && this.lrc.pause();
+            // this.lrc && this.lrc.pause();
         },
 
         stop: function(){
