@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>music player</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="jquery1.8.min.js"></script>
+        <script src="lrc.js" charset="utf-8"></script>
+        <script src="player.js" charset="utf-8"></script>
+        <script src="control.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="list">
+            <ul>
+            </ul>
+        </div>
+        
+        
+        
+        <div id="add" title="add">
+            <input type="file" id="file" multiple="true" title="add" />
+        </div>
+
+        <div id="lrc">
+            <span style="color:#FFF">no-lrc</span>
+        </div>
+        
+        <div id="control">
+            <span class="style-1 pre">PRE</span>
+            <span class="style-2 play">PLAY</span>
+            <span class="style-1 next">NEXT</span>
+            <span class="style-2 loop">ORDER</span>
+            <span class="style-1 muted">MUTED</span>
+        </div>
+        
+        
+        <div id="duration" title="duration">
+            <div>00:00/00:00</div>
+        </div>
+        
+        <div id="volume" title="volume">
+            <div></div>
+        </div>
+    </body>
+</html>
