@@ -21,7 +21,7 @@
         init: function(){
             var self = this;
             var reader = new FileReader();
-            reader.readAsText(this.lrc.src, "gb2312");
+            reader.readAsText(this.lrc.src, "utf-8");
             reader.onload = function(){
                 self.lrcText = reader.result;
                 self.txt2list(self.lrcText);

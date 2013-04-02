@@ -48,7 +48,7 @@ body{
 }
 
 #control{
-    left: 900px;
+    left: 770px;
     top: 420px;
     width: 400px;
     height: 80px;
@@ -73,7 +73,7 @@ body{
 }
 
 #duration{
-    width: 1000px;
+    width: 870px;
     height: 12px;
     line-height: 12px;
     border: 1px solid #4BA9E6;
@@ -111,8 +111,8 @@ body{
 
 
 #add{
-    left: 1140px;
-    top: 200px;
+    left: 1090px;
+    top: 290px;
     width: 80px;
     height: 80px;
     overflow: hidden;
